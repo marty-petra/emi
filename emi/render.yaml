@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: emimvp
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn emi.wsgi
