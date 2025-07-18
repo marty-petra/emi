@@ -1,6 +1,8 @@
+
 services:
   - type: web
     name: emiapp
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn emi.wsgi
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn emi.wsgi:application"
