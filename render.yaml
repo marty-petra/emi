@@ -1,10 +1,11 @@
-
 services:
   - type: web
-    name: emiapp
-    env: python
-    plan: free
-    buildCommand: |
-      pip install -r requirements.txt
-      python manage.py migrate
-    startCommand: "gunicorn emi.wsgi:application"
+    name: emi
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: |
+      python manage.py migrate &&
+      gunicorn emiapp.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: your-secret-key
