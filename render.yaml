@@ -4,5 +4,7 @@ services:
     name: emiapp
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py migrate
     startCommand: "gunicorn emi.wsgi:application"
